@@ -26,15 +26,27 @@ const ExpenseList = () => {
 				placeholder='Type to search...'
 				onChange={handleChange}
 			/>
-			<ul class='list-group mt-3 mb-3'>
-				{filteredExpenses.map((expense) => (
-					<ExpenseItem
-						id={expense.id}
-						name={expense.name}
-						cost={expense.cost}
-					/>
-				))}
-			</ul>
+			<table class="table">
+				<thead>
+					<tr>
+					<th scope="col">#</th>
+					<th scope="col">Expense</th>
+					<th scope="col">Date </th>
+					<th scope="col">Amount</th>
+					</tr>
+				</thead>
+				<tbody>
+						{filteredExpenses.map((expense) => (
+							<ExpenseItem
+								id={expense.id}
+								name={expense.name}
+								cost={expense.cost}
+								date={expense.date}
+							/>
+						))}
+				</tbody>
+			</table>	
+			
 		</>
 	);
 };

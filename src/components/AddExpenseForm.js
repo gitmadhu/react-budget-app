@@ -1,12 +1,14 @@
 import React, { useContext, useState } from 'react';
 import { AppContext } from '../context/AppContext';
 import { v4 as uuidv4 } from 'uuid';
+import { format } from 'date-fns'
 
 const AddExpenseForm = (props) => {
 	const { dispatch } = useContext(AppContext);
 
 	const [name, setName] = useState('');
 	const [cost, setCost] = useState('');
+	const [date, setDate] = useState('');
 
 	const onSubmit = (event) => {
 		event.preventDefault();
@@ -14,6 +16,7 @@ const AddExpenseForm = (props) => {
 			id: uuidv4(),
 			name,
 			cost: parseInt(cost),
+			date:format(new Date(), 'dd/MM/yyyy'),
 		};
 
 		dispatch({
@@ -23,6 +26,7 @@ const AddExpenseForm = (props) => {
 
 		setName('');
 		setCost('');
+		//seDate('');
 	};
 
 	return (
